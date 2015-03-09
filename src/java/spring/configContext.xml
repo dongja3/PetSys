@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.orgdtd/spring-beans.dtd">
+<beans>	
+	<bean id="configService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" >
+		<property name="transactionManager"><ref bean="transactionManager"/></property>
+		<property name="target"><ref local="configTarget"/></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="remove*">PROPAGATION_REQUIRED</prop>
+				<prop key="create*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+    <!-- ***** Struct Target 服务定位*****-->
+    <bean id="configTarget" class="com.drategy.pets.springservice.impl.ConfigServiceImpl" >
+		<property name="sysMoudleConfig"><ref local="sysMoudleConfig"/></property>
+		<property name="searchFields"><ref local="searchFields"/></property> 	 	  	          
+	</bean>
+		
+	<!-- 查询器对象 -->	
+	<bean id="searchFields" class="com.drategy.pets.context.impl.MapWraperImpl">
+		<property name="values">
+			<map>
+				<entry key="petOwner">
+					<value>from PetOwner as po where 1=1</value>
+				</entry>
+				<entry key="petOwnerPageSize">
+					<value>10</value>
+				</entry>	
+				
+				<entry key="pet">
+					<value>from Pet p where 1=1</value>
+				</entry>
+				<entry key="petPageSize">
+					<value>10</value>
+				</entry>
+				
+				<entry key="area">
+					<value>from Area area where 1=1</value>
+				</entry>
+				<entry key="areaPageSize">
+					<value>10</value>
+				</entry>	
+				
+				<entry key="user">
+					<value>from User u where 1=1</value>
+				</entry>
+				<entry key="userPageSize">
+					<value>10</value>
+				</entry>	
+				
+				<entry key="employee">
+					<value>from Employee employee where 1=1</value>
+				</entry>
+				<entry key="employeePageSize">
+					<value>10</value>
+				</entry>	
+				
+				<entry key="vaccine">
+					<value>from Vaccine v where 1=1</value>
+				</entry>
+				<entry key="vaccinePageSize">
+					<value>10</value>
+				</entry>
+				
+				<entry key="treatmentRecord">
+					<value>from TreatmentRecord tr where 1=1</value>
+				</entry>
+				<entry key="treatmentRecordPageSize">
+					<value>10</value>
+				</entry>
+				
+				<entry key="news">
+					<value>from News n where 1=1</value>
+				</entry>
+				<entry key="newsPageSize">
+					<value>10</value>
+				</entry>
+				
+				<entry key="sms">
+					<value>from Sms s where 1=1</value>
+				</entry>
+				<entry key="smsPageSize">
+					<value>10</value>
+				</entry>	
+				
+				<entry key="statByArea">
+					<value>from Pet p where 1=1</value>
+				</entry>
+				<entry key="statByAreaPageSize">
+					<value>10</value>
+				</entry>	
+				
+				<entry key="statByVaccine">
+					<value>select p from Pet p inner join p.vaccineSet as v where 1=1 </value>
+				</entry>
+				
+				<entry key="statByVaccine1">
+					<value>select p from Pet p where 1=1 </value>
+				</entry>
+				
+				<entry key="statByVaccinePageSize">
+					<value>10</value>
+				</entry>	
+				
+				<entry key="statByVariety">
+					<value>select p from Pet p where 1=1 </value>
+				</entry>
+				
+				<entry key="statByVarietyPageSize">
+					<value>10</value>
+				</entry>		
+				
+			</map>
+		</property>
+	</bean>
+	
+	<!--系统角色 -->
+	<bean id="sysRoleConfig" class="com.drategy.pets.context.impl.MapWraperImpl">
+		<property name="values">
+		     <map>
+		       <entry key="admin">
+					<value>admin</value>
+				</entry>
+				<entry key="sysInputor">
+					<value>sysInputor</value>
+				</entry>
+				<entry key="sysDoctor">
+					<value>sysDoctor</value>
+				</entry>
+				<entry key="sysQuery">
+					<value>sysQuery</value>
+				</entry>
+				<entry key="sysVaccine">
+					<value>sysVaccine</value>
+				</entry>
+		     </map>
+		</property>
+	</bean>
+	
+	<!--系统模块设置 -->
+	<bean id="sysMoudleConfig" class="com.drategy.pets.biz.SysMoudleConfig">
+		<property name="moudleNames">
+			<map>			
+				<entry key="宠物及主人">
+					<value>宠物$主人</value>
+				</entry>
+				<entry key="疫苗">
+					<value>疫苗</value>
+				</entry>	
+				<entry key="病例">
+					<value>病例</value>
+				</entry>	
+				<entry key="查询报表">
+					<value>查询报表</value>
+				</entry>	
+				<entry key="管理">
+					<value>区域$员工$登陆帐号$权限$新闻$短信</value>
+				</entry>				
+			</map>
+		</property>
+		<property name="sysRoleConfigMoudleName">
+			<map>			
+				<entry key="admin">
+					<value>宠物及主人$疫苗$病例$查询报表$管理</value>
+				</entry>
+				<entry key="sysInputor">
+					<value>宠物及主人$疫苗$查询报表</value>
+				</entry>	
+				<entry key="sysDoctor">
+					<value>病例$查询报表</value>
+				</entry>	
+				<entry key="sysQuery">
+					<value>查询报表</value>
+				</entry>	
+				<entry key="sysVaccine">
+					<value>疫苗$查询报表</value>
+				</entry>				
+			</map>
+		</property>
+	</bean>
+	
+</beans>

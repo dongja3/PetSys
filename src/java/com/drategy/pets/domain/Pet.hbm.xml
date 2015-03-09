@@ -1,0 +1,147 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.drategy.pets.domain.Pet" 
+    table="pets"
+>
+
+    <id
+        name="id"
+        type="java.lang.String"
+        column="petId"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="age"
+        type="java.lang.String"
+        column="age"
+        length="20"
+    >
+    </property>
+    <property
+        name="certificateUnit"
+        type="java.lang.String"
+        column="certificateUnit"
+        length="100"
+    >
+    </property>
+    <property
+        name="character"
+        type="java.lang.String"
+        column="character"
+        length="200"
+    >
+    </property>
+    <property
+        name="hairColor"
+        type="java.lang.String"
+        column="hairColor"
+        length="50"
+    >
+    </property>
+    <property
+        name="petName"
+        type="java.lang.String"
+        column="petName"
+        length="100"
+    >       
+    </property>
+    <property
+        name="petNo"
+        type="java.lang.String"
+        column="petNo"
+        length="100"
+    >
+    </property>
+    <property
+        name="dateIssceed"
+        type="java.lang.String"
+        column="dateIssceed"
+        length="20"
+    >
+    </property>
+    <property
+        name="sex"
+        type="java.lang.String"
+        column="sex"
+        length="10"
+    >
+    </property>
+    <property
+        name="usage"
+        type="java.lang.String"
+        column="usage"
+        length="120"
+    >
+    </property>
+    <property
+        name="father"
+        type="java.lang.String"
+        column="father"
+        length="30"
+    >
+    </property>
+    <property
+        name="mother"
+        type="java.lang.String"
+        column="mother"
+        length="30"
+    >
+    </property>
+    <property
+        name="importAddr"
+        type="java.lang.String"
+        column="importAddr"
+        length="255"
+    >
+    </property>
+    
+    <!--一个宠物有多疫苗记录 -->
+	    <set      
+	        name="vaccineSet"
+            lazy="true"
+            inverse="false"
+            cascade="delete">
+            <key  column="petId" />
+            <one-to-many
+                  class="com.drategy.pets.domain.Vaccine"
+              />
+        </set>       
+        <!--一个宠物治病记录 -->
+	    <set      
+	        name="treatmentRecordSet"
+            lazy="true"
+            inverse="false"
+            cascade="delete">
+            <key  column="petId" />
+            <one-to-many
+                  class="com.drategy.pets.domain.TreatmentRecord"
+              />
+        </set>
+        <!--宠物 多对一（芯片）-->
+        <many-to-one name="rfidChip"  class="com.drategy.pets.domain.RfidChip"    cascade="delete" column="rfidChipId"/>
+        <!--宠物 多对一（主人）-->
+        <many-to-one name="petOwner"  class="com.drategy.pets.domain.PetOwner"  column="petOwnerId"/>
+         <!--宠物 多对一照片-->
+        <many-to-one name="petImage"  class="com.drategy.pets.bom.Image"  outer-join="false" column="imageId"/>
+        <!--宠物 多对一 证明证书 -->
+        <many-to-one name="certificate"  class="com.drategy.pets.bom.Image"  outer-join="false" column="certificateId"/>
+        <!--宠物 多对一（主人）-->
+        <many-to-one name="variety"  cascade="none"  class="com.drategy.pets.domain.Variety"  column="varietyId"/>    
+    <!-- Associations -->  
+
+</class>
+</hibernate-mapping>

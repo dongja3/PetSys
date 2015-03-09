@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.drategy.pets.domain.User" 
+    table="users"
+>
+    <id
+        name="id"
+        type="java.lang.String"
+        column="id"
+    >
+       <generator class="assigned" />
+    </id>
+
+    <property
+        name="userName"
+        type="java.lang.String"
+        column="userName"
+        length="20"
+    >
+    </property>
+    <property
+        name="password"
+        type="java.lang.String"
+        column="password"
+        length="20"
+    >         
+    </property>
+    <property
+        name="sysRole"
+        type="java.lang.String"
+        column="sysRole"
+        length="20"
+    >
+       
+    </property>
+    <property
+        name="note"
+        type="java.lang.String"
+        column="note"
+        length="200"
+    >
+        
+    </property>
+    
+     <many-to-one name="employee" cascade="none"  class="com.drategy.pets.domain.Employee"  column="employeeId" />
+     <set      
+        name="authorizationSet"
+        lazy="true"
+        inverse="false"
+        cascade="delete">
+        <key  column="userId" />
+        <one-to-many
+              class="com.drategy.pets.domain.Authorization"
+          />
+     </set> 
+     
+     <!-- area -->
+     <many-to-one name="area" cascade="none"  class="com.drategy.pets.domain.Area"  column="areaId" />
+    
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"  "http://struts.apache.org/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<!--form beans Configuration-->
+	<form-beans>
+	
+	    <!-- Login form bean -->
+        <form-bean name="loginForm" type="com.drategy.pets.form.LoginForm"/>
+        
+         <!-- Owner Register form bean -->
+        <form-bean name="petOwnerForm" type="com.drategy.pets.form.PetOwnerForm"/>
+		
+		<!-- Pets Register form bean -->
+        <form-bean name="petForm" type="com.drategy.pets.form.PetForm"/>
+        
+        <!-- Pets Bacterin Injection form bean -->
+        <form-bean name="vaccineRecordForm" type="com.drategy.pets.form.VaccineRecordForm"/>
+        
+        <!-- Pets Treament form bean -->
+        <form-bean name="treatmentRecordForm" type="com.drategy.pets.form.TreatmentRecordForm"/>
+        
+        <!-- Pets Search form bean -->
+        <form-bean name="chipNoForm" type="com.drategy.pets.form.ChipNoForm"/>
+        
+        <!-- Query form bean -->
+        <form-bean name="queryForm" type="com.drategy.pets.form.QueryForm"/>
+        
+        <!-- Area Form define -->
+        <form-bean name="areaForm" type="com.drategy.pets.form.AreaForm"/>
+        
+        <!-- Employee Form define -->
+        <form-bean name="employeeForm" type="com.drategy.pets.form.EmployeeForm"/>
+        
+        <!-- user Form define -->
+        <form-bean name="userForm" type="com.drategy.pets.form.UserForm"/>
+        
+         <!-- news Form define -->
+        <form-bean name="newsForm" type="com.drategy.pets.form.NewsForm"/>
+        
+         <!-- sms Form define -->
+        <form-bean name="smsForm" type="com.drategy.pets.form.SmsForm"/>
+          
+	</form-beans>
+	
+	<!--global exception-->
+	 <global-exceptions>
+		<exception key="error.dbException" scope="request" path="/500.jsp" type="com.drategy.pets.exception.DAOException"/>
+		<exception key="error.nullPointException" scope="request" path="/index.jsp" type="java.lang.NullPointerException"/>
+	</global-exceptions>
+	
+	<!--global forwards-->
+	 <global-forwards>
+       <forward name="illegalCopy" path="/info_illegal.jsp"/>
+       <forward name="expiredApp" path="/info_expire.jsp"/>
+     </global-forwards>
+	
+	
+	<!--plugin Configuration-->
+	<action-mappings>
+	
+		<!-- Login Action -->
+        <action    path="/login"
+               type="com.drategy.pets.action.LoginAction"
+               name="loginForm"
+               scope="request"
+               attribute="login"
+               input="/login.jsp">
+           <forward name="success" path="/newsListAction.do?method=show"/>
+           <forward name="loginOff" redirect="true" path="/login.do" />
+        </action>   
+        
+        <action path="/initLogin"
+               type="com.drategy.pets.action.InitLoginAction"
+               scope="request"
+               parameter="method"
+               >
+           <forward name="success" path="/login.jsp"/>
+        </action>       
+        		
+		<!-- area Action define here -->
+		<action    path="/initAreaAction" 
+		           type="com.drategy.pets.action.InitAreaAction" 
+		           scope="request" 
+		           parameter="method">
+           <forward name="success" path="/admin_area.jsp"/>
+           <forward name="delete" path="/area_action_end.jsp"/>
+           <forward name="fail" path="/area_action_end.jsp"/>
+        </action>
+        
+        <action   path="/areaAction"
+                  type="com.drategy.pets.action.AreaAction" 
+                  name="areaForm"
+                  scope="request"
+                  parameter="method"
+                  attribute="areaForm"
+                  input="/admin_area.jsp">
+           <forward name="success" path="/area_action_end.jsp"/>
+        </action>
+        
+        <action    path="/areaListAction" 
+		           type="com.drategy.pets.action.AreaListAction" 
+		           scope="request" 
+		           parameter="method">
+           <forward name="success" path="/admin_areaList.jsp"/>
+        </action>
+        
+        <!-- employee Action define here -->
+		<action    path="/initEmployeeAction" 
+		           type="com.drategy.pets.action.InitEmployeeAction" 
+		           scope="request" 
+		           parameter="method">
+           <forward name="success" path="/admin_employee.jsp"/>
+           <forward name="delete" path="/employee_action_end.jsp"/>
+        </action>
+        
+        <action   path="/employeeAction"
+                  type="com.drategy.pets.action.EmployeeAction" 
+                  name="employeeForm"
+                  scope="request"
+                  parameter="method"
+                  attribute="employeeForm"
+                  input="/admin_employee.jsp">
+           <forward name="success" path="/employee_action_end.jsp"/>
+        </action>
+        
+        <action    path="/employeeListAction" 
+		           type="com.drategy.pets.action.EmployeeListAction" 
+		           scope="request" 
+		           parameter="method">
+           <forward name="success" path="/admin_employeeList.jsp"/>
+        </action>
+        
+        <!-- user Action define here -->
+		<action    path="/initUserAction" 
+		           type="com.drategy.pets.action.InitUserAction" 
+		           scope="request" 
+		           parameter="method">
+           <forward name="success" path="/admin_user.jsp"/>
+           <forward name="delete" path="/user_action_end.jsp"/>
+            <forward name="updatePassword" path="/user_action_end.jsp"/>           
+        </action>
+        
+        <action   path="/userAction"
+                  type="com.drategy.pets.action.UserAction" 
+                  name="userForm"
+                  scope="request"
+                  parameter="method"
+                  attribute="userForm"
+                  input="/admin_user.jsp">
+           <forward name="success" path="/user_action_end.jsp"/>
+        </action>
+        
+        <action    path="/userListAction" 
+		           type="com.drategy.pets.action.UserListAction" 
+		           scope="request" 
+		           parameter="method">
+           <forward name="success" path="/admin_userList.jsp"/>
+        </action>
+        
+        <!-- News Action define here -->
+		<action    path="/initNewsAction" 
+		           type="com.drategy.pets.action.InitNewsAction" 
+		           scope="request" 
+		           parameter="method">
+           <forward name="success" path="/admin_news.jsp"/>
+           <forward name="delete" path="/news_action_end.jsp"/>
+           <forward name="fail" path="/news_action_end.jsp"/>
+        </action>
+        
+        <action   path="/newsAction"
+                  type="com.drategy.pets.action.NewsAction" 
+                  name="newsForm"
+                  scope="request"
+                  parameter="method"
+                  attribute="newsForm"
+                  input="/admin_news.jsp">
+           <forward name="success" path="/news_action_end.jsp"/>
+        </action>
+        
+        <action    path="/newsListAction" 
+		           type="com.drategy.pets.action.NewsListAction" 
+		           scope="request" 
+		           parameter="method">
+           <forward name="success" path="/admin_newsList.jsp"/>
+           <forward name="show" path="/homepage.jsp"/>
+        </action>
+        
+		<action    path="/newsTopListAction" 
+		           type="com.drategy.pets.action.NewsTopListAction" 
+		           scope="request" >
+           <forward name="success" path="/news_topList.jsp"/>
+        </action>
+        
+        <action    path="/newsInfoAction"
+                    type="com.drategy.pets.action.NewsInfoAction" 
+		            scope="request" >
+           <forward name="success" path="/news_info.jsp"/>
+        </action>
+        
+        <!-- pet owner Action define here -->
+		<action    path="/initPetOwnerAction" 
+		           type="com.drategy.pets.action.InitPetOwnerAction" 
+		           scope="request" 
+		           parameter="method">
+           <forward name="success" path="/pets_owner.jsp"/>
+           <forward name="delete" path="/pets_owner_action_end.jsp"/>
+        </action>
+        
+        <action    path="/petOwnerAction" 
+		           type="com.drategy.pets.action.PetOwnerAction" 
+		           name="petOwnerForm"
+                   scope="request"
+                   parameter="method"
+                   attribute="petOwnerForm"
+                   input="/pets_owner.jsp">
+           <forward name="success" path="/pets_owner_action_end.jsp"/>
+        </action>
+        
+        <action    path="/petOwnerListAction" 
+		           type="com.drategy.pets.action.PetOwnerListAction" 
+		           scope="request" 
+		           parameter="method">
+           <forward name="success" path="/pets_ownerList.jsp"/>
+        </action>
+        
+        <!--pet action define here -->
+        <action    path="/initPetAction" 
+		           type="com.drategy.pets.action.InitPetAction" 
+		           scope="request" 
+		           parameter="method">
+           <forward name="success" path="/pets_pet.jsp"/>
+           <forward name="delete" path="/pets_pet_action_end.jsp"/>
+           <forward name="noOwner" path="/pets_pet_action_end.jsp"/>
+           <forward name="showInfo" path="/pets_petInfo.jsp"/>
+           <forward name="partnerInfo" path="/pets_partnerInfo.jsp"/>
+           <forward name="showPetInfo" path="/pets_petInfoByStat.jsp"/>
+        </action>
+        
+        <action    path="/petAction" 
+		           type="com.drategy.pets.action.PetAction" 
+		           name="petForm"
+                   scope="request"
+                   parameter="method"
+                   attribute="petForm"
+                   input="/pets_pet.jsp">
+           <forward name="success" path="/pets_pet_action_end.jsp"/>
+        </action>
+        
+         <action    path="/petListAction" 
+		           type="com.drategy.pets.action.PetListAction"		          
+                   scope="request"
+                   parameter="method"         
+                  >
+           <forward name="success" path="/pets_petList.jsp"/>
+        </action>    
+        
+        <action    path="/searchPetAction" 
+		           type="com.drategy.pets.action.SearchPetAction"		          
+                   scope="request"
+                   parameter="method"         
+                  >
+           <forward name="success" path="/query_petList.jsp"/>
+        </action>     
+        
+        <!-- pet Vaccine Action define here -->
+		<action    path="/initVaccineAction" 
+		           type="com.drategy.pets.action.InitVaccineAction" 
+		           name="chipNoForm"	         
+		           scope="request" 
+		           parameter="method"
+		           attribute="chipNoForm"
+		           input="/pets_search_vaccine.jsp">
+           <forward name="success" path="/pets_vaccine.jsp"/>   
+           <forward name="delete" path="/pets_vaccine_action_end.jsp"/>
+           <forward name="show" path="/pets_vaccineInfo.jsp"/>    
+        </action>
+        
+        <action    path="/vaccineAction" 
+		           type="com.drategy.pets.action.VaccineAction" 
+		           name="vaccineRecordForm"
+                   scope="request"
+                   parameter="method" 
+                   input="/pets_vaccine.jsp">
+           <forward name="success" path="/pets_vaccine_action_end.jsp"/>
+        </action>
+        
+        <action    path="/vaccineListAction" 
+		           type="com.drategy.pets.action.VaccineListAction" 		  
+                   scope="request"
+                   parameter="method"             
+                  >
+           <forward name="success" path="/pets_vaccineList.jsp"/>
+        </action>
+        
+        <!-- pet Treament Action define here -->
+		<action    path="/initTreatmentRecordAction" 
+		           type="com.drategy.pets.action.InitTreatmentRecordAction" 
+		           name="chipNoForm"	         
+		           scope="request" 
+		           parameter="method"
+		           attribute="chipNoForm"
+		           input="/pets_search_treament.jsp">
+           <forward name="success" path="/pets_treatment.jsp"/>
+           <forward name="delete" path="/pets_treatment_action_end.jsp"/>
+           <forward name="show" path="/pets_treatmentInfo.jsp"/>
+        </action>
+        
+        <action    path="/treatmentRecordAction" 
+		           type="com.drategy.pets.action.TreatmentRecordAction" 
+		           name="treatmentRecordForm"
+                   scope="request"
+                   parameter="method"
+                   attribute="treatmentRecordForm"
+                   input="/pets_treatment.jsp">
+           <forward name="success" path="/pets_treatment_action_end.jsp"/>
+        </action>
+        
+        <action    path="/treatmentRecordListAction" 
+		           type="com.drategy.pets.action.TreatmentRecordListAction" 
+                   scope="request"
+                   parameter="method"    
+                   >
+           <forward name="success" path="/pets_treatmentList.jsp"/>
+        </action>
+        
+        <!--lost and foun action define here-->
+        <action    path="/lostandFoundAction" 
+		           type="com.drategy.pets.action.LostandFoundAction" 
+		           name="chipNoForm"	         
+		           scope="request" 
+		           parameter="method"
+		           attribute="chipNoForm"
+		           input="/login.jsp">
+           <forward name="success" path="/pets_lostandfound.jsp"/>
+        </action>
+        
+         <!--lost and found action define here-->
+        <action    path="/lostandFoundAction2" 
+		           type="com.drategy.pets.action.LostandFoundAction" 
+		           name="chipNoForm"	         
+		           scope="request" 
+		           parameter="method"
+		           attribute="chipNoForm"
+		           input="/pets_search.jsp">
+           <forward name="success" path="/pets_lostandfound.jsp"/>
+        </action>
+        
+         <!--lost and found action define here-->
+        <action    path="/lostandFoundAction3" 
+		           type="com.drategy.pets.action.LostandFoundAction" 
+		           name="chipNoForm"	         
+		           scope="request" 
+		           parameter="method"
+		           attribute="chipNoForm"
+		           input="/newsListAction.do?method=show">
+           <forward name="success" path="/pets_lostandfound.jsp"/>
+        </action>
+        
+        <!--authorization action define here --> 
+        <action    path="/initAuthorizationConfigAction" 
+		           type="com.drategy.pets.action.InitAuthorizationConfigAction" 
+                   scope="request"
+                   parameter="method"    
+                   >
+           <forward name="success" path="/pets_authorizationConfig.jsp"/>
+        </action>
+        
+        <action    path="/authorizationConfigAction" 
+		           type="com.drategy.pets.action.AuthorizationConfigAction" 
+                   scope="request"
+                   parameter="method"    
+                   >
+           <forward name="success" path="/pets_authorizationConfig_action_end.jsp"/>
+        </action>
+		
+		<!-- statAction define here  -->
+		 <action    path="/statAction" 
+		           type="com.drategy.pets.action.StatAction" 
+                   scope="request"
+                   parameter="method"    
+                   >
+           <forward name="statByArea" path="/statByArea.jsp"/>
+           <forward name="statByVaccine" path="/statByVaccine.jsp"/>
+           <forward name="statByVariety" path="/statByVariety.jsp"/>
+        </action>
+        
+        <!-- SmsAction define here  -->
+	    <action    path="/smsListAction" 
+		           type="com.drategy.pets.action.SmsListAction" 
+		           scope="request" >
+           <forward name="success" path="/admin_smsList.jsp"/>
+        </action>
+        
+        <action    path="/initSmsAction" 
+		           type="com.drategy.pets.action.InitSmsAction" 
+		           scope="request" 
+		           parameter="method">
+           <forward name="success" path="/admin_sms.jsp"/>
+           <forward name="delete" path="/sms_action_end.jsp"/>
+        </action>
+        
+        <action   path="/smsAction"
+                  type="com.drategy.pets.action.SmsAction" 
+                  name="smsForm"
+                  scope="request"
+                  parameter="method"
+                  attribute="smsForm"
+                  input="/admin_sms.jsp">
+           <forward name="success" path="/smsListAction.do"/>
+        </action>
+        
+        
+         <!--Variety Action defined here -->
+         <action    path="/varietyListAction" 
+		           type="com.drategy.pets.action.VarietyListAction" 
+		            parameter="method"
+		           scope="request" >
+           <forward name="success" path="/pets_VarietyList.jsp"/>
+           <forward name="partnership" path="/pets_PartnerVarietyList.jsp"/>
+        </action>
+        
+        <!--partnership Action defined here -->
+         <action    path="/partnerShipAction" 
+		           type="com.drategy.pets.action.PartnerShipAction" 
+		            parameter="method"
+		           scope="request" >
+           <forward name="success" path="/pets_partnerPetList.jsp"/>
+        </action>
+        
+         <!--statResultShow Action defined here -->
+         <action    path="/statResultShow" 
+		           type="com.drategy.pets.action.StatResultShow" 
+		           scope="request" parameter="method" >
+           <forward name="statByArea" path="/statResultByArea.jsp"/>
+           <forward name="statByVaccine" path="/statResultByVaccine.jsp"/>
+           <forward name="statByVariety" path="/statResultByVariety.jsp"/>
+        </action>
+    
+	</action-mappings>
+	
+	
+	<!-- ========== Plug Ins Configuration ============ -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,
+                                              /WEB-INF/validation.xml"/>
+    </plug-in>
+    
+</struts-config>

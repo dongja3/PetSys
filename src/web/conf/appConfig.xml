@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Configuration>
+	<!-- 以下定义数据库配置 -->
+	<Configs name="dbConfig">
+        	<Config key="dbOwner">dbo</Config>
+        	<Config key="dbOwner">dbo</Config>
+       	 	<!-- 数据库类型 oracle或者sybase-->
+        	<Config key="dbType">sybase</Config>
+	</Configs>
+	
+        <Configs name="copyRightConfig">
+               <Config key="company">浙江中图射频科技有限公司</Config>
+               <Config key="productName">宠物自动识别管理系统</Config>
+               <Config key="version">1.0</Config>
+        </Configs>
+        
+        <Configs name="statConfig">
+               <Config key="areaLength">2</Config>            
+        </Configs> 
+        
+         <Configs name="areaNote">
+               <Config key="topArea">330000</Config>            
+        </Configs>  
+        
+        <Configs name="security">
+               <Config key="fileName">license.properties</Config>            
+        </Configs>
+</Configuration>

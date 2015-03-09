@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_0.dtd">
+
+<form-validation>
+   <global>
+   </global>
+   
+   <formset>
+       <form name="login">
+         <field    property="userName"
+         	   depends="required,mask,minlength">
+         	     <arg0 key="loginForm.userName"/>
+         	     <arg1 name="minlength" key="${var:minlength}" resource="false"/>
+                     <var>
+                       <var-name>mask</var-name>
+                       <var-value>^\w+$</var-value>
+                     </var>
+                     <var>
+                       <var-name>minlength</var-name>
+                       <var-value>2</var-value>
+                     </var>
+         </field>
+         <field    property="password"
+         	   depends="required,minlength">
+         	     <arg0 key="loginForm.password"/>
+         	     <arg1 name="minlength" key="${var:minlength}" resource="false"/>
+                     <var>
+                       <var-name>minlength</var-name>
+                       <var-value>6</var-value>
+                     </var>
+         </field>
+       </form>
+       
+       <form name="petOwnerForm">
+         <field    property="name"
+         	   depends="required,minlength">
+         	     <arg0 key="owner.name"/>
+         	     <arg1 name="minlength" key="${var:minlength}" resource="false"/>
+                     <var>
+                       <var-name>minlength</var-name>
+                       <var-value>2</var-value>
+                     </var>
+         </field>
+         <field    property="age"
+         	   depends="required">
+         	     <arg0 key="owner.age"/>         	     
+         </field>
+         <field    property="residentID"
+         	   depends="required,minlength,maxlength,mask">
+         	     <arg0 key="owner.residentID"/>
+         	     <arg1 name="minlength" key="${var:minlength}" resource="false"/>
+         	     <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+         	     <var>
+                       <var-name>mask</var-name>
+                       <var-value>^[0-9]{15}[a-zA-Z0-9]*$</var-value>
+                     </var>
+                     <var>
+                       <var-name>minlength</var-name>
+                       <var-value>15</var-value>
+                     </var>
+                     <var>
+                       <var-name>maxlength</var-name>
+                       <var-value>18</var-value>
+                     </var>
+         </field>
+       </form>
+       
+       <form name="petForm">
+         <field    property="petName"
+         	   depends="required,minlength">
+         	     <arg0 key="pet.petName"/>
+         	     <arg1 name="minlength" key="${var:minlength}" resource="false"/>
+                     <var>
+                       <var-name>minlength</var-name>
+                       <var-value>2</var-value>
+                     </var>
+         </field>  
+         <field    property="rfidNo"
+         	   depends="required,minlength,mask">
+         	     <arg0 key="pet.rfidNo"/>
+         	     <arg1 name="minlength" key="${var:minlength}" resource="false"/>
+         	         <var>
+                       <var-name>mask</var-name>
+                       <var-value>^[a-zA-Z0-9]{9}[a-zA-Z0-9]*$</var-value>
+                     </var>
+                     <var>
+                       <var-name>minlength</var-name>
+                       <var-value>10</var-value>
+                     </var>
+         </field> 
+         <field    property="petNo"
+         	   depends="required,mask,minlength">
+         	     <arg0 key="pet.petNo"/>
+         	     <arg1 name="minlength" key="${var:minlength}" resource="false"/>
+         	         <var>
+                       <var-name>mask</var-name>
+                       <var-value>^\w+$</var-value>
+                     </var>
+                     <var>
+                       <var-name>minlength</var-name>
+                       <var-value>5</var-value>
+                     </var>
+         </field>
+         <field    property="varietyName"
+         	   depends="required">
+         	     <arg0 key="pet.variety"/>
+         </field>              
+       </form>
+       
+       <form name="chipNoForm">
+         <field    property="chipNo"
+         	   depends="required,mask">
+         	     <arg0 key="search.chipNo"/>
+         	        <var>
+                       <var-name>mask</var-name>
+                       <var-value>^\w+$</var-value>
+                     </var>
+         </field> 
+       </form>
+                                  
+       <form name="employeeForm">
+         <field    property="name"
+         	   depends="required">
+         	     <arg0 key="employee.name"/>
+         </field> 
+         <field    property="residentID"
+         	   depends="required,minlength,maxlength,mask">
+         	     <arg0 key="employee.residentID"/>
+         	     <arg1 name="minlength" key="${var:minlength}" resource="false"/>
+         	     <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+         	     <var>
+                       <var-name>mask</var-name>
+                       <var-value>^[0-9]{15}[a-zA-Z0-9]*$</var-value>
+                     </var>
+                     <var>
+                       <var-name>minlength</var-name>
+                       <var-value>15</var-value>
+                     </var>
+                     <var>
+                       <var-name>maxlength</var-name>
+                       <var-value>18</var-value>
+                     </var>
+         </field>
+       </form>
+       
+        <form name="areaForm">
+         <field    property="name"
+         	   depends="required">
+         	     <arg0 key="area.name"/>
+         </field> 
+         <field    property="areaCode"
+         	   depends="required,mask">
+         	     <arg0 key="area.areaCode"/>
+         	     <var>
+                       <var-name>mask</var-name>
+                       <var-value>[a-zA-Z0-9]*$</var-value>
+                     </var>
+         </field> 
+       </form>
+       
+        <form name="userForm">
+         <field    property="userName"
+         	   depends="required,mask,minlength">
+         	     <arg0 key="loginForm.userName"/>
+         	     <arg1 name="minlength" key="${var:minlength}" resource="false"/>
+                     <var>
+                       <var-name>mask</var-name>
+                       <var-value>^\w+$</var-value>
+                     </var>
+                     <var>
+                       <var-name>minlength</var-name>
+                       <var-value>2</var-value>
+                     </var>
+         </field>
+         <field    property="password"
+         	   depends="required,minlength">
+         	     <arg0 key="loginForm.password"/>
+         	     <arg1 name="minlength" key="${var:minlength}" resource="false"/>
+                     <var>
+                       <var-name>minlength</var-name>
+                       <var-value>6</var-value>
+                     </var>
+         </field>
+       </form>
+       
+       <form name="newsForm">
+         <field    property="title"
+         	   depends="required,maxlength">
+         	     <arg0 key="news.title"/>
+         	      <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+                     <var>
+                       <var-name>maxlength</var-name>
+                       <var-value>150</var-value>
+                     </var>
+         </field> 
+          <field    property="content"
+         	   depends="required">
+         	     <arg0 key="news.content"/>
+         </field> 
+         <field    property="date"
+         	   depends="required">
+         	     <arg0 key="news.date"/>
+         </field> 
+       </form>
+       
+   </formset>
+     
+</form-validation>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.orgdtd/spring-beans.dtd">
+<beans> 
+	
+    <!-- ***** 搜索产生器*****-->	
+    <bean id="searchGenertor" class="com.drategy.pets.biz.SearchGenertor" singleton="false"/>
+   
+    <!-- ***** 统计数据产生器*****-->	
+    <bean id="dataGenerator" class="com.drategy.pets.biz.DataGenerator" />
+     
+    <!-- ***** 统计结果产生器*****-->	
+    <bean id="statResultGenerator" class="com.drategy.pets.biz.StatResultGenerator" singleton="false" >
+    	<property name="dataGenerator"> <ref local="dataGenerator" /> </property>
+    </bean>
+    
+    <!-- ***** 按区域统计sql结果产生器*****-->	
+    <bean id="areaStatSqlGenerator" class="com.drategy.pets.biz.AreaStatSqlGenerator" singleton="false" >
+    	<property name="rowMap">
+    	    <map>
+			<entry key="统计结果"><value>1=1</value></entry>
+			</map>
+    	</property>
+    	<property name="sqlBlock">
+    	 <value>select count(*) from Pet p where {0} and {1} and {2}</value>
+    	</property>
+    </bean>    
+    
+    <!-- ***** 按区域统计sql结果产生器*****-->	
+    <bean id="vaccineStatSqlGenerator" class="com.drategy.pets.biz.VaccineStatSqlGenerator" singleton="false" >
+    	<property name="rowMap">
+    	    <map>
+			<entry key="统计结果"><value>1=1</value></entry>
+			</map>
+    	</property>
+    	<property name="sqlBlock">
+    	 <value>select count(distinct p.id) from Pet p ,Vaccine v where  {0} and {1} and {2}</value>
+    	</property>
+    </bean>
+    
+     <!-- ***** 按区域统计sql结果产生器*****-->	
+    <bean id="varietyStatSqlGenerator" class="com.drategy.pets.biz.VarietyStatSqlGenerator" singleton="false" >    
+    	<property name="sqlBlock">
+    	 <value>select count(distinct p.id) from Pet p  where  {0} and {1} and {2}</value>
+    	</property>
+    </bean>
+    
+    
+    <!-- ***** 得到本级和下级区域*****-->	
+    <bean id="getAreaListByUser" class="com.drategy.pets.biz.GetAreaListByUser" >    	
+    </bean>    
+    
+</beans>

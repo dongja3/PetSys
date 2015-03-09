@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.drategy.pets.domain.Authorization" 
+    table="authorizations"
+>    <id
+        name="id"
+        type="java.lang.String"
+        column="id"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="moudleName"
+        type="java.lang.String"
+        column="moudleName"
+        length="20"
+    >
+    </property>
+    <property
+        name="actAdd"
+        type="java.lang.String"
+        column="actAdd"
+        length="10"
+    >
+        
+    </property>
+    <property
+        name="actUpdate"
+        type="java.lang.String"
+        column="actUpdate"
+        length="10"
+    >      
+    </property>
+    <property
+        name="actDelete"
+        type="java.lang.String"
+        column="actDelete"
+        length="10"
+    >
+    </property>
+    <property
+        name="childMoudleName"
+        type="java.lang.String"
+        column="childMoudleName"
+        length="20"
+    >      
+    </property>
+    
+    <many-to-one name="user"  cascade="none" class="com.drategy.pets.domain.User"  column="userId" />
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

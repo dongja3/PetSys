@@ -1,0 +1,65 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.drategy.pets.domain.PetOwner" 
+    table="petOwners"
+>
+    <id
+        name="id"
+        type="java.lang.String"
+        column="petOwnerId"
+    >        
+        <generator class="assigned" />
+    </id>    
+    <property name="name" type="java.lang.String" length="30" />
+	<property name="sex" type="java.lang.String" length="10" />
+	<property name="age" type="java.lang.String" length="30" />
+	<property name="residentID" type="java.lang.String" length="18" />
+	<property name="postCode" type="java.lang.String" length="18" />	
+	<property name="smsService" type="java.lang.String" length="10" />
+	<property name="startTime" type="java.lang.String" length="30" />
+	<property name="endTime" type="java.lang.String" length="30" />
+
+    <!--一个宠物主人有对宠物 -->        
+	<set      
+	        name="petSet"
+            lazy="true"
+            inverse="false"
+            cascade="delete">
+            <key  column="petOwnerId" />
+            <one-to-many   class="com.drategy.pets.domain.Pet"/>
+    </set> 
+      
+    <!-- 主人的地址-->
+    <set      
+	     name="addrSet"
+         lazy="true"
+         inverse="false"
+         cascade="delete">
+         <key  column="petOwnerId" />
+         <one-to-many
+                  class="com.drategy.pets.bom.Address"
+              />
+    </set>             
+        
+    <!-- 主人的电话-->
+    <many-to-one name="phone" cascade="delete"  class="com.drategy.pets.bom.Phone"  column="phoneId" /> 
+    
+     <!-- 所在区域 -->
+    <many-to-one name="area" cascade="none"  class="com.drategy.pets.domain.Area"  column="areaId" /> 
+    
+    <!-- Associations -->
+
+</class>
+</hibernate-mapping>

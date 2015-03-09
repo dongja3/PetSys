@@ -1,0 +1,203 @@
+//$Source: /petSys/petSys/src/java/com/drategy/pets/springservice/StructService.java,v $
+//LasterModified By:$Author: jackie.dong $
+//$Date: 2005/12/31 07:14:49 $
+
+
+package com.drategy.pets.springservice;
+
+import java.util.List;
+
+import com.drategy.pets.bom.Address;
+import com.drategy.pets.bom.Image;
+import com.drategy.pets.bom.Phone;
+import com.drategy.pets.domain.User;
+import com.drategy.pets.domain.Area; 
+import com.drategy.pets.domain.Authorization; 
+import com.drategy.pets.domain.Employee;
+import com.drategy.pets.domain.Pet;
+import com.drategy.pets.domain.PetOwner;
+import com.drategy.pets.domain.RfidChip;
+import com.drategy.pets.domain.TreatmentRecord; 
+import com.drategy.pets.domain.Vaccine;
+/**
+* 系统的structService接口
+* @author Jason Jiang
+* @author $Author: jackie.dong $
+* @$Revision: 1.12 $
+*/
+public interface StructService extends BaseService {
+    
+    /**增加登录用户*/
+    public void addUser(User user);
+    
+    /**查询一个登录用户*/
+    public User findUser(String id);
+    
+    /**删除一个登录用户*/
+    public void deleteUser(User user);
+    
+    /**修改一个登录用户*/
+    public void updateUser(User user);
+    
+    /***查找一个user通过name*/
+    public User findUserByName(String name);
+    
+    /***通过AreaId查找user*/
+    public List findUserByAreaId(String id);
+    
+    /**通过userName 和 password 查找用户*/
+    public User findUserByUserName(String userName,String password);
+    
+    /**增加区域*/
+    public void addArea(Area area);
+    
+    /**查找一个区域对象*/
+    public Area findArea(String id);
+    
+    /**删除一个区域对象*/
+    public void deleteArea(Area area);
+    
+    /**修改一个区域对象*/
+    public void updateArea(Area area);
+    
+    /***查找一个area通过name*/
+    public Area findAreaByName(String name);
+    
+    /**查找一个通过areaCode**/
+    public Area findByCode(String areaCode);
+    
+    /**通过areaName查找记录号不是该ID的area*/
+    public Area findByNameandId(String areaName,String id);
+    
+    /**通过areaCode查找记录号不是该ID的area*/
+    public Area findByCodeandId(String areaCode,String id);
+    
+    /**返回所有的区域*/
+    public List findAllArea();
+    
+    /**增加一个权限*/
+    public void addAuthorization(Authorization authorization);
+    
+    /**查找一个权限*/
+    public Authorization findAuthorization(String id);
+    
+    /**删除一个权限*/
+    public void deleteAuthorization(Authorization authorization);
+    
+    /**修改一个权限*/
+    public void updateAuthorization(Authorization authorization);
+    
+    /**查找一个权限通过模块名**/
+    public Authorization findAuthorizationBymoudleName(String moudleName,String childMoudleName,String userId);
+    
+    /**增加一个员工*/
+    public void addEmployee(Employee employee);
+    
+    /**查找一个员工*/
+    public Employee findEmployee(String id);
+    
+    /**删除一个员工*/
+    public void deleteEmployee(Employee employee);
+    
+    /**修改一个员工*/
+    public void updateEmployee(Employee employee);
+    
+    /***查找一个Employee通过name*/
+    public Employee findEmployeeByName(String name);
+    
+    /**增加一个宠物*/
+    public void addPet(Pet pet);
+    
+    /**查找一个宠物*/
+    public Pet findPet(String id);
+    
+    /**删除一个宠物*/
+    public void deletePet(Pet pet);
+    
+    /**修改一个宠物对象*/
+    public void updatePet(Pet pet);
+    
+    /**通过芯片号码找宠物**/
+    public Pet findPetByChipNo(String chipNo);
+    
+    /**增加一个宠物主人**/
+    public void addPetOwner(PetOwner petOwner);
+    
+    /**查找一个宠物主人**/
+    public PetOwner findPetOwner(String id);
+    
+    /**删除一个宠物主人**/
+    public void deletePetOwner(PetOwner petOwner);
+    
+    /**修改一个宠物对象**/
+    public void updatePetOwner(PetOwner petOwner);    
+    
+    /**增加一个RfidChip**/
+    public void addRfidChip(RfidChip rfidChip);
+    
+    /**查找一个RfidChip对象**/
+    public RfidChip findRfidChip(String id);
+    
+    /**删除一个RfidChip对象**/
+    public void deleteRfidChip(RfidChip rfidChip);
+    
+    /**修改一个RfidChip对象**/
+    public void updateRfidChip(RfidChip rfidChip);
+    
+    /**增加一个看病记录对象**/
+    public void addTreatmentRecord(TreatmentRecord treatmentRecord);
+    
+    /**查找一个看病记录对象**/
+    public TreatmentRecord findTreatmentRecord(String id);
+    
+    /**删除一个看病记录对象**/
+    public void  deleteTreatmentRecord(TreatmentRecord treatmentRecord);
+    
+    /**修改一个看病记录对象**/
+    public void updateTreatmentRecord(TreatmentRecord treatmentRecord);
+    
+    /**增加一个疫苗记录**/
+    public void addVaccine(Vaccine vaccine);
+    
+    /**查找一个疫苗记录对象**/
+    public Vaccine findVaccine(String id);
+    
+    /**删除一个疫苗记录对象**/
+    public void deleteVaccine(Vaccine vaccine);
+    
+    /**修改一个疫苗记录对象**/
+    public void updateVaccine(Vaccine vaccine);
+    
+    /**增加address对象**/
+    public void addAddress(Address address);
+    
+    /**修改address对象**/
+    public void updateAddress(Address address);
+    
+    /**删除address对象**/
+    public void deleteAddress(Address address);
+    
+    /**增加电话对象**/
+    public void addPhone(Phone phone);
+    
+    /**修改电话对象**/
+    public void updatePhone(Phone phone);
+    
+    /**删除电话对象**/
+    public void deletePhone(Phone phone);
+    
+    /**增加图片对象**/
+    public void addImage(Image image);
+    
+    /**修改图片对象**/
+    public void updateImage(Image image);
+    
+    /**删除图片对象**/
+    public void deleteImage(Image image);
+    
+    /**查找图片对象**/
+    public Image findImage(String id);
+    
+    
+    
+}

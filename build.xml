@@ -1,0 +1,198 @@
+<!-- build file for Drategy Pet System project -->
+
+<project name="petApp" default="build" basedir=".">
+    <!-- change value of java.dir and tomcat.dir according to
+             real installation path of JDK1.5 and Tomcat on local machine -->
+             
+	 <property name="java.dir" value="C:\Program Files\Java\jdk1.5.0_05"/>
+	 <property name="tomcat.dir" value="D:\tomcat5.0"/>
+	 <property name="eclipseBulid" value="D:/petApp/petSys/src/web/WEB-INF/classes"/>
+
+    <property name="petApp.dir" value="${tomcat.dir}/webapps/petApp"/>
+    <property name="src.dir" value="src"/>
+    <property name="lib.dir" value="${src.dir}/web/WEB-INF/lib"/>
+    <property name="dest.dir" value="${petApp.dir}/WEB-INF/classes"/>
+    <property name="web.dir" value="${src.dir}/web"/>
+    <!--<property name="jar.file" value="petApp.jar"/>-->
+    <property name="petApp.warfile" value="petApp.war"/>
+    
+    <!-- define class path -->
+    <path id="class.path">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+
+        <fileset dir="${tomcat.dir}/common/lib">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+    
+    
+    <target name="build" depends="petApp-war"/>
+
+    <!-- create dest.dir and directories under Tomcat -->
+    <target name="mkdir">
+        <mkdir dir="${dest.dir}"/>
+        <mkdir dir="${dest.dir}/spring"/>
+
+        <mkdir dir="${petApp.dir}"/>
+        <mkdir dir="${petApp.dir}/WEB-INF"/>
+        <mkdir dir="${petApp.dir}/WEB-INF/lib"/>
+        <mkdir dir="${petApp.dir}/conf"/>
+        <mkdir dir="${petApp.dir}/logs"/>
+        <mkdir dir="${petApp.dir}/image"/>
+        <mkdir dir="${petApp.dir}/js"/>
+    </target>
+    
+    <!-- build petApp.war -->
+    <target name="petApp-war" depends="compile, copy, native2ascii">
+        <war destfile="${petApp.warfile}"
+            basedir="${petApp.dir}"
+            webxml="${web.dir}/WEB-INF/web.xml">
+        </war>
+    </target>
+    
+    
+    <!-- compile java files -->
+    <target name="compile">
+       <!-- <javac srcdir="${src.dir}/java" destdir="${dest.dir}" encoding="UTF-8" deprecation="on">
+            <classpath refid="class.path"/>
+            <compilerarg value="-Xlint:unchecked,-serial"/>
+        </javac>-->
+        
+        <!-- copy all eclipse build classes file -->
+        <copy todir="${petApp.dir}/WEB-INF/classes">
+            <fileset dir="${eclipseBulid}" includes="**/*"/>
+        </copy>
+        
+        
+    </target>
+    
+    <target name="copy" >
+    
+        <!-- copy spring configuration file -->
+        <copy todir="${dest.dir}/spring">
+            <fileset dir="${src.dir}/java/spring" includes="**/*.*"/>
+        </copy>
+        
+         <!-- copy log4j configuration file -->
+        <copy todir="${petApp.dir}/conf" file="${src.dir}/web/conf/systemlog.properties"/>
+        
+        <!-- copy xml configuration file -->
+        <copy todir="${petApp.dir}/conf">
+          <fileset dir="${web.dir}/conf" includes="**/*.xml"/>
+        </copy>
+        
+        <!-- copy jsp configuration file -->
+        <copy todir="${petApp.dir}/conf">
+          <fileset dir="${web.dir}/conf" includes="**/*.jsp"/>
+        </copy>
+
+		 
+        <!-- copy exe configuration file -->
+        <copy todir="${petApp.dir}/conf">
+          <fileset dir="${web.dir}/conf" includes="**/*.exe"/>
+        </copy>
+
+         
+        <!-- copy dll configuration file -->
+        <copy todir="${petApp.dir}/conf">
+          <fileset dir="${web.dir}/conf" includes="**/*.dll"/>
+        </copy>
+
+		 
+        <!-- copy ini configuration file -->
+        <copy todir="${petApp.dir}/conf">
+          <fileset dir="${web.dir}/conf" includes="**/*.ini"/>
+        </copy>
+		
+        <!-- copy  libraries -->
+        <copy todir="${petApp.dir}/WEB-INF/lib">
+            <fileset dir="${lib.dir}"/>
+        </copy>
+        
+        <!-- copy tld files to WEB-INF -->
+        <copy todir="${petApp.dir}/WEB-INF">
+            <fileset dir="${web.dir}/WEB-INF" includes="**/*.tld"/>
+        </copy>
+        
+         <!-- copy dtd files to WEB-INF -->
+        <copy todir="${petApp.dir}/WEB-INF">
+            <fileset dir="${web.dir}/WEB-INF" includes="**/*.dtd"/>
+        </copy>
+        
+        <!-- copy xml files to WEB-INF -->
+        <copy todir="${petApp.dir}/WEB-INF">
+            <fileset dir="${web.dir}/WEB-INF" includes="**/*.xml"/>
+        </copy>
+        
+        <!-- copy jsp file -->
+        <copy todir="${petApp.dir}">
+          <fileset dir="${web.dir}" includes="**/*.jsp"/>
+        </copy>
+        
+         <!-- copy css file -->
+        <copy todir="${petApp.dir}">
+          <fileset dir="${web.dir}" includes="**/*.css"/>
+        </copy>
+        
+         <!-- copy image file -->
+        <copy todir="${petApp.dir}/image">
+          <fileset dir="${web.dir}/image" includes="**/*.*"/>
+        </copy>
+        
+        <!-- copy js file -->
+        <copy todir="${petApp.dir}/js">
+          <fileset dir="${web.dir}/js" includes="**/*.*"/>
+        </copy>
+        
+         <!-- copy log file -->
+        <copy todir="${petApp.dir}/logs">
+          <fileset dir="${web.dir}/logs" includes="**/*.log"/>
+        </copy>
+
+		<!-- copy htm file -->
+        <copy todir="${petApp.dir}">
+          <fileset dir="${web.dir}" includes="**/*.htm"/>
+        </copy>
+
+		<!-- copy html file -->
+        <copy todir="${petApp.dir}">
+          <fileset dir="${web.dir}" includes="**/*.html"/>
+        </copy>
+
+    </target>
+    
+    <!-- run native2ascii to convert Chinese properties file -->
+    <target name="native2ascii">
+        <!-- delete old files first -->
+        <delete>
+            <fileset dir="${dest.dir}" includes="*zh_CN.properties"/>
+        </delete>
+
+        <native2ascii encoding="GBK" src="${src.dir}/java" dest="${dest.dir}"
+            includes="**/*zh_CN.properties"/>
+            
+        
+    </target>
+    
+    <!-- clean up -->
+    <target name="clean">
+        <!-- remove files of petApp in Tomcat -->
+        <delete>
+            <fileset dir="${petApp.dir}" includes="**"/>
+        </delete>
+
+        <!-- remove class files -->
+        <delete>
+            <fileset dir="${dest.dir}" includes="**"/>
+        </delete>
+
+        <!-- remove jar file -->
+        <delete file="${jar.file}"/>
+
+        <!-- remove war file -->
+        <delete file="${petApp.warfile}"/>
+    </target>
+    
+</project>

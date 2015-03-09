@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.orgdtd/spring-beans.dtd">
+<beans>
+       <!--
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location"><value>/WEB-INF/config.properties</value></property>
+	</bean>
+        -->
+  	<!-- Choose the dialect that matches your "dataSource" definition -->
+    
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+        <property name="driverClassName"> 
+            <value>com.microsoft.jdbc.sqlserver.SQLServerDriver</value> 
+        </property> 
+        <property name="url"> 
+            <value>jdbc:microsoft:sqlserver://localhost;databaseName=test001</value> 
+        </property> 
+        <property name="username"> 
+            <value>sa</value> 
+        </property> 
+        <property name="password"> 
+            <value></value> 
+        </property> 
+    </bean>  
+  
+  	<bean id="sessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
+               <property name="dataSource"><ref local="dataSource"/></property>
+               <property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">net.sf.hibernate.dialect.SQLServerDialect</prop>
+                                <prop key="hibernate.show_sql">true</prop>
+                                
+                                <prop key="hibernate.hbm2ddl.auto">update</prop>
+
+                                <prop key="hibernate.batch_size">25</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>				
+             <value>com/drategy/pets/domain/User.hbm.xml</value>
+             <value>com/drategy/pets/domain/Employee.hbm.xml</value>
+             <value>com/drategy/pets/domain/RfidChip.hbm.xml</value> 
+             <value>com/drategy/pets/domain/Pet.hbm.xml</value>    
+             <value>com/drategy/pets/domain/Vaccine.hbm.xml</value> 
+             <value>com/drategy/pets/domain/PetOwner.hbm.xml</value> 
+             <value>com/drategy/pets/bom/Address.hbm.xml</value>   
+             <value>com/drategy/pets/bom/Phone.hbm.xml</value> 
+             <value>com/drategy/pets/bom/Image.hbm.xml</value> 
+             <value>com/drategy/pets/domain/TreatmentRecord.hbm.xml</value>   
+             <value>com/drategy/pets/domain/Authorization.hbm.xml</value>  
+             <value>com/drategy/pets/domain/Area.hbm.xml</value>  
+             <value>com/drategy/pets/domain/News.hbm.xml</value>
+             <value>com/drategy/pets/domain/Sms.hbm.xml</value>   
+             <value>com/drategy/pets/domain/Variety.hbm.xml</value>  
+             <value>com/drategy/pets/domain/SmsSend.hbm.xml</value> 
+			</list>
+		</property>
+	</bean>
+	
+    <bean id="baseDAO" class="com.drategy.pets.dao.hibernate.BaseDAOImpl">
+	     <property name="sessionFactory"><ref local="sessionFactory"/></property>
+         <property name="hibernateCfg"><ref local="hibernateCfg"/></property>
+    </bean>
+    <!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate.HibernateTransactionManager">
+		<property name="sessionFactory"><ref local="sessionFactory"/></property>
+	</bean>
+     <bean id="hibernateCfg" class="com.drategy.pets.context.impl.HibernateCfgImpl" >
+		<property name="sessionFactory"><ref local="sessionFactory"/></property>
+	</bean>
+	 
+	 <!-- 安全检测类-->
+	 <bean id="systemSecurity" class="com.drategy.pets.security.SystemSecurity" singleton="true" />
+
+</beans>

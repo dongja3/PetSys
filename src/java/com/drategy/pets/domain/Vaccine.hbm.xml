@@ -1,0 +1,90 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.drategy.pets.domain.Vaccine" 
+    table="vaccines"
+>
+    <id
+        name="id"
+        type="java.lang.String"
+        column="id"
+    >       
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="name"
+        type="java.lang.String"
+        column="name"
+        length="60"
+    >         
+    </property>
+    <property
+        name="injectDate"
+        type="java.lang.String"
+        column="injectDate"
+        length="20"
+    >        
+    </property>
+    <property
+        name="description"
+        type="java.lang.String"
+        column="description"
+        length="255"
+    >         
+    </property>
+    <property
+        name="supplierName"
+        type="java.lang.String"
+        column="supplierName"
+        length="255"
+    >        
+    </property>
+    <property
+        name="batchNo"
+        type="java.lang.String"
+        column="batchNo"
+        length="60"
+    >       
+    </property>
+    <property
+        name="actionMethod"
+        type="java.lang.String"
+        column="actionMethod"
+        length="10"
+    >
+    </property>
+    <property
+        name="actionLocation"
+        type="java.lang.String"
+        column="actionLocation"
+        length="20"
+    >        
+    </property>
+    <property
+        name="hospitalName"
+        type="java.lang.String"
+        column="hospitalName"
+        length="150"
+    >
+    </property>
+    
+    <!-- 一条疫苗记录　对应一个兽医　-->
+	<many-to-one name="veterinarian" class="com.drategy.pets.domain.Employee" column="employeeId" />
+	<many-to-one name="pet" class="com.drategy.pets.domain.Pet"  column="petId" />	
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

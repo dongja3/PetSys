@@ -1,0 +1,197 @@
+/* CSS Document */
+
+body{
+margin:0;
+padding:0;
+font-family:Arial,Verdana,  Helvetica, sans-serif;
+font-size:12px;
+color:#505050;
+}
+.toplink{
+font-family:Tahoma, Verdana, Arial;
+font-size:11px;
+}
+.toptd{
+padding-left:6px;
+padding-right:6px;
+}
+.wrapperborder{
+background-image:url(image/backgroud-dot.gif);
+padding:4px;
+}
+.bannerbg{
+background-image:url(image/banner-bg-middle.gif);
+}
+.bannerfonttitle{
+font-family:Arial, Helvetica, sans-serif;
+font-size:20px;
+font-weight:bold;
+color:#FFFFFF;
+}
+.bannerfontcontent{
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#FFFFFF;
+}
+.menutd{
+background-image:url(image/menu_bg.jpg);
+}
+.menubar{
+
+}
+.menuitem{
+text-align:center;
+font-size:13px;
+color:#eBeeDe;
+font-weight:bold;
+font-family:Arial, Helvetica, sans-serif;
+padding-left:6px;
+padding-right:6px;
+}
+
+.sel{
+background-image:url(image/menu_sel_bg.jpg);
+color:black;
+}
+
+
+
+.titlecontent{
+background-image:url(image/title_middle.gif);
+font-size:13px;
+color:#505050;
+font-weight:bold;
+font-family:Arial, Helvetica, sans-serif;
+
+}
+.imagestyle{
+border:1px #eeeeee solid;
+}
+
+
+#textbox #title{
+color:#505050;
+font-family:Arial, Helvetica, sans-serif;
+font-weight:bold;
+font-size:12px;
+}
+#textbox #greentitle{
+color:#5EAA09;
+font-family:Arial, Helvetica, sans-serif;
+font-weight:bold;
+font-size:13px;
+}
+#textbox #content{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color:#505050;
+margin-top:7px;
+font-size:11px;
+}
+
+#textbox #morelink{
+font-weight:bold;
+color:#3399CC;
+font-size:11px;
+margin-top:7px;
+}
+.newstd{
+  padding-right:6px;
+  border-right:3px #efefef solid;
+}
+.horizon-split{
+  border-top:2px #efefef solid;
+  height:1px;
+}
+.graybox{
+  background-color:#efefef;
+  border:2px #cccccc solid;
+}
+.whitebox{
+  background-color:#ffffff;
+  border:2px #eeeeee solid;
+}
+.bggray{
+  background-color:#efefef;
+}
+
+
+.comment{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color:#505050;
+font-size:11px;
+}
+.STYLE2 {
+	color: #00CC00;
+	font-weight: bold;
+}
+#animalcontainer{
+float:left;
+text-align:center;
+margin:3px;
+}
+#animalcontainer #animalname{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color:#505050;
+font-size:11px;
+font-weight:bold;
+}
+.animalbox{
+text-align:center;
+}
+.footerbar{
+background-color:#333333;
+text-align:center;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color:#fff;
+font-weight:bold;
+font-size:11px;
+padding:4px;
+}
+.tdtitle{
+background-color:#666666;
+text-align:left;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color:#fff;
+font-weight:bold;
+font-size:11px;
+padding:4px;
+}
+/**---Link----**/
+A:link{
+  color:#3399CC;
+  text-decoration:none;
+}
+A:hover{
+  color:#3399CC;
+  text-decoration:underline;
+}
+A:visited{
+  color:#006699;
+  text-decoration:none;
+}
+
+#whitelink a:link{
+  color:white;
+  text-decoration:none;
+}
+#whitelink a:hover{
+  color:white;
+  text-decoration:underline;
+}
+#whitelink a:visited{
+  color:white;
+  text-decoration:none;
+}
+#whitelink a:active{
+  color:white;
+  text-decoration:underline;
+}
+
+td {
+	font-family:Arial,Verdana,  Helvetica, sans-serif;
+    font-size:12px;
+    color:#505050;
+}
+tr {
+	height: 30px;
+}

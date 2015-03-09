@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping>
+
+	<class name="com.drategy.pets.domain.Sms" table="sms">
+
+		<id name="id" type="java.lang.String" column="id">
+			<generator class="assigned" />
+		</id>
+
+		<property name="areaCode" type="java.lang.String"
+			column="areaCode" length="50">
+		</property>
+
+		<property name="ownerType" type="java.lang.String"
+			column="ownerType" length="50">
+		</property>
+
+		<property name="content" type="java.lang.String" column="content" length="200">
+		</property>
+		
+		<property name="send" type="java.lang.String"
+			column="send" length="10">
+		</property>
+
+		<property name="sendTime" type="java.lang.String" column="sendTime"
+			length="50">
+		</property>
+
+
+	</class>
+</hibernate-mapping>

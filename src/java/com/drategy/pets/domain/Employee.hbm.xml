@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.drategy.pets.domain.Employee" 
+    table="employees"
+>
+    
+
+    <id
+        name="id"
+        type="java.lang.String"
+        column="id"
+    >
+      
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="note"
+        type="java.lang.String"
+        column="note"
+        length="100"
+    >
+          
+    </property>
+    
+    <property name="name" type="java.lang.String" length="50" />
+	<property name="sex" type="java.lang.String" length="10" />
+	<property name="age" type="java.lang.String" length="20" />
+	<property name="residentID" type="java.lang.String" length="18" />
+	<property name="postCode" type="java.lang.String" length="10" />
+    
+     <!--一个兽医有多宠物疫苗记录 -->
+	  <set
+            name="vaccineSet"
+            lazy="true"
+            inverse="false"
+            cascade="delete">
+            <key  column="employeeId" />
+            <one-to-many
+                  class="com.drategy.pets.domain.Vaccine"
+              />
+       </set>         
+               
+       <!-- 看病记录-->
+       <set      
+	        name="treatmentRecordSet"
+            lazy="true"
+            inverse="false"
+            cascade="delete">
+            <key  column="employeeId" />
+            <one-to-many
+                  class="com.drategy.pets.domain.TreatmentRecord"
+              />
+       </set>  
+       
+       <!-- 登陆帐户-->
+       <set      
+	        name="userSet"
+            lazy="true"
+            inverse="false"
+            cascade="delete">
+            <key  column="employeeId" />
+            <one-to-many
+                  class="com.drategy.pets.domain.User"
+              />
+       </set> 
+          
+       <!-- Associations -->
+     
+
+</class>
+</hibernate-mapping>

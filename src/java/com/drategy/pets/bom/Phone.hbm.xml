@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.drategy.pets.bom.Phone" 
+    table="phones"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="phones"
+    </meta>
+
+    <id
+        name="id"
+        type="java.lang.String"
+        column="id"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="assigned"
+            type="java.lang.String"
+            column="id"
+
+
+        </meta>
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="homeTelephone"
+        type="java.lang.String"
+        column="homeTelephone"
+        length="60"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="homeTelephone"
+            length="60"
+        </meta>    
+    </property>
+    <property
+        name="companyTelephone"
+        type="java.lang.String"
+        column="companyTelephone"
+        length="60"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="companyTelephone"
+            length="60"
+        </meta>    
+    </property>
+    <property
+        name="mobileTelephone"
+        type="java.lang.String"
+        column="mobileTelephone"
+        length="60"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="mobileTelephone"
+            length="60"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Configuration>
+	<!-- 以下定义基础配置 -->
+	<Configs name="baseConfig">
+	    <Config key="sessionUserKey">currUser</Config>
+            <Config key="encodding">GBK</Config>
+            <!-- 系统模式，debug或者release -->
+            <Config key="systemMode">release</Config>
+        </Configs>        
+</Configuration>

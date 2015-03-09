@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.drategy.pets.bom.Address" 
+    table="addresses"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="addresses"
+    </meta>
+
+    <id
+        name="id"
+        type="java.lang.String"
+        column="id"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="assigned"
+            type="java.lang.String"
+            column="id"
+
+
+        </meta>
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="country"
+        type="java.lang.String"
+        column="country"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="country"
+            length="20"
+        </meta>    
+    </property>
+    <property
+        name="province"
+        type="java.lang.String"
+        column="province"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="province"
+            length="20"
+        </meta>    
+    </property>
+    <property
+        name="city"
+        type="java.lang.String"
+        column="city"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="city"
+            length="20"
+        </meta>    
+    </property>
+    <property
+        name="citySection"
+        type="java.lang.String"
+        column="citySection"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="citySection"
+            length="20"
+        </meta>    
+    </property>
+    <property
+        name="county"
+        type="java.lang.String"
+        column="county"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="county"
+            length="20"
+        </meta>    
+    </property>
+    <property
+        name="town"
+        type="java.lang.String"
+        column="town"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="town"
+            length="20"
+        </meta>    
+    </property>
+    <property
+        name="village"
+        type="java.lang.String"
+        column="village"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="village"
+            length="20"
+        </meta>    
+    </property>
+    <property
+        name="detailAddress"
+        type="java.lang.String"
+        column="detailAddress"
+        length="255"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="detailAddress"
+            length="255"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

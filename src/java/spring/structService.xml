@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.orgdtd/spring-beans.dtd">
+<beans>
+     <!--
+     这里定义了数据库的操作，原子操作和事务操作
+     DAO 是原子操作
+     Service 是事务操作
+     根据业务需求划分事务操作，一个事务操作有1个或者多个原子操作组成
+     -->     
+     <!-- ***** Security SERVICE 事务操作*****-->
+	<bean id="structService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" >
+		<property name="transactionManager"><ref bean="transactionManager"/></property>
+		<property name="target"><ref local="structTarget"/></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="remove*">PROPAGATION_REQUIRED</prop>
+				<prop key="create*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+    
+    <!-- ***** Struct Target 服务定位*****-->
+    <bean id="structTarget" class="com.drategy.pets.springservice.impl.StructServiceImpl" >
+		<property name="areaDAO"><ref local="areaDAO"/></property>
+		<property name="authorizationDAO"><ref local="authorizationDAO"/></property>
+		<property name="employeeDAO"><ref local="employeeDAO"/></property>
+		<property name="petDAO"><ref local="petDAO"/></property>
+		<property name="petOwnerDAO"><ref local="petOwnerDAO"/></property>
+		<property name="rfidChipDAO"><ref local="rfidChipDAO"/></property>
+		<property name="treatmentRecordDAO"><ref local="treatmentRecordDAO"/></property>
+		<property name="userDAO"><ref local="userDAO"/></property>		
+		<property name="vaccineDAO"><ref local="vaccineDAO"/></property> 
+		<property name="addressDAO"><ref local="addressDAO"/></property>
+		<property name="phoneDAO"><ref local="phoneDAO"/></property>  
+		<property name="imageDAO"><ref local="imageDAO"/></property>   
+		<property name="newsDAO"><ref local="newsDAO"/></property>
+		<property name="smsDAO"><ref local="smsDAO"/></property>  
+		<property name="varietyDAO"><ref local="varietyDAO"/></property>  
+		<property name="smsSendDAO"><ref local="smsSendDAO"/></property>       
+	</bean>
+	
+	 <!-- *****原子操作*****-->
+	  <bean id="areaDAO" class="com.drategy.pets.dao.hibernate.AreaDAOImpl">
+		<property name="baseDAO"><ref bean="baseDAO"/></property>
+	  </bean>
+	  
+	   <bean id="authorizationDAO" class="com.drategy.pets.dao.hibernate.AuthorizationDAOImpl">
+		<property name="baseDAO"><ref bean="baseDAO"/></property>
+	   </bean>
+	   
+	   <bean id="employeeDAO" class="com.drategy.pets.dao.hibernate.EmployeeDAOImpl">
+		<property name="baseDAO"><ref bean="baseDAO"/></property>
+	   </bean>
+	  	
+	   <bean id="petDAO" class="com.drategy.pets.dao.hibernate.PetDAOImpl">
+		<property name="baseDAO"><ref bean="baseDAO"/></property>
+	   </bean>
+	
+       <bean id="petOwnerDAO" class="com.drategy.pets.dao.hibernate.PetOwnerDAOImpl">
+	 	<property name="baseDAO"><ref bean="baseDAO"/></property>
+	   </bean>	
+	   
+	   <bean id="rfidChipDAO" class="com.drategy.pets.dao.hibernate.RfidChipDAOImpl">
+	 	<property name="baseDAO"><ref bean="baseDAO"/></property>
+	   </bean>
+	   
+	   <bean id="treatmentRecordDAO" class="com.drategy.pets.dao.hibernate.TreatmentRecordDAOImpl">
+	 	<property name="baseDAO"><ref bean="baseDAO"/></property>
+	   </bean>	
+	   
+	   <bean id="userDAO" class="com.drategy.pets.dao.hibernate.UserDAOImpl">
+	 	<property name="baseDAO"><ref bean="baseDAO"/></property>
+	   </bean>	
+	   
+	   <bean id="vaccineDAO" class="com.drategy.pets.dao.hibernate.VaccineDAOImpl">
+	 	<property name="baseDAO"><ref bean="baseDAO"/></property>
+	   </bean>
+	   
+	   <bean id="addressDAO" class="com.drategy.pets.dao.hibernate.AddressDAOImpl">
+	 	<property name="baseDAO"><ref bean="baseDAO"/></property>
+	   </bean>
+	   
+	   <bean id="phoneDAO" class="com.drategy.pets.dao.hibernate.PhoneDAOImpl">
+	 	<property name="baseDAO"><ref bean="baseDAO"/></property>
+	   </bean>
+	   
+	   <bean id="imageDAO" class="com.drategy.pets.dao.hibernate.ImageDAOImpl">
+	 	<property name="baseDAO"><ref bean="baseDAO"/></property>
+	   </bean>
+	   
+	   <bean id="newsDAO" class="com.drategy.pets.dao.hibernate.NewsDAOImpl">
+		<property name="baseDAO"><ref bean="baseDAO"/></property>
+	  </bean>
+	  
+	   <bean id="smsDAO" class="com.drategy.pets.dao.hibernate.SmsDAOImpl">
+		<property name="baseDAO"><ref bean="baseDAO"/></property>
+	  </bean>
+	  
+	  <bean id="varietyDAO" class="com.drategy.pets.dao.hibernate.VarietyDAOImpl">
+		<property name="baseDAO"><ref bean="baseDAO"/></property>
+	  </bean>
+	  
+	  <bean id="smsSendDAO" class="com.drategy.pets.dao.hibernate.SmsSendDAOImpl">
+		<property name="baseDAO"><ref bean="baseDAO"/></property>
+	  </bean>
+	   
+</beans>

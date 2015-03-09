@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.orgdtd/spring-beans.dtd">
+<beans>
+       <!--
+       这里定义了系统的启动类，当APP启动时，将按照启动列表的顺序，运行启动类
+       用户开发具体业务启动类时，必须实现com.drategy.pets.springservice.AppStart接口
+       -->
+	<bean id="appStartManager" class="com.drategy.pets.springservice.impl.AppStartManagerImpl">
+		<property name="appStartList">
+			<list>	
+               <ref local="serviceManagerStartImpl"/>
+               <ref local="appStart"/>
+			</list>
+		</property>
+	</bean>    
+     <!--
+       本次应用启动类，完成本次应用的启动
+      -->
+     <bean id="appStart" class="com.drategy.pets.springservice.impl.AppStartImpl">
+     		<property name="testData"><value>false</value></property>
+    </bean> 
+	<!--
+     数据库事务级服务启动类，完成数据库的初始化
+    -->
+    <bean id="serviceManagerStartImpl" class="com.drategy.pets.springservice.impl.ServiceManagerStartImpl">
+		<property name="serviceManager"><ref bean="serviceManager"/></property>
+    </bean> 
+</beans>

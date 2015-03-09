@@ -1,0 +1,126 @@
+[Root]
+Most Recent Package=标准安装软件包 1
+
+
+[Package|标准安装软件包 1|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=E:\短信开发包\smsSend\包
+
+[Package|标准安装软件包 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|标准安装软件包 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|标准安装软件包 1|Files Found]
+
+[Package|标准安装软件包 1|Files Released]
+
+[Package|标准安装软件包 1|Missing Dependency Information]
+C:\Program Files\Common Files\System\ado\msado26.tlb=
+C:\WINNT\system32\Dao360.dll=
+C:\WINNT\system32\odbcconf.dll=
+E:\短信开发包\smsSend\AscendSMS.dll=
+E:\短信开发包\smsSend\AscendComm.dll=
+
+[Package|标准安装软件包 1|Out-of-Date Dependency Information]
+C:\WINNT\system32\MSRDO20.DLL=
+
+[Package|标准安装软件包 1|Files Added]
+E:\短信开发包\smsSend\AscendComm.dll=
+E:\短信开发包\smsSend\config.ini=
+
+[Package|标准安装软件包 1|Files Removed]
+
+[Package|标准安装软件包 1|Files In Project]
+E:\短信开发包\smsSend\smsSend.exe=Yes
+C:\WINNT\system32\Msvbvm60.dll=Yes
+C:\WINNT\system32\oleaut32.dll=Yes
+C:\WINNT\system32\olepro32.dll=Yes
+C:\WINNT\system32\asycfilt.dll=Yes
+C:\WINNT\system32\stdole2.tlb=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINNT\system32\vb6chs.dll=Yes
+E:\短信开发包\smsSend\AscendSMS.dll=Yes
+C:\WINNT\system32\odbcconf.dll=Yes
+C:\WINNT\system32\Dao360.dll=Yes
+C:\Program Files\Common Files\System\ado\msado26.tlb=Yes
+C:\WINNT\system32\MSRDC20.OCX=Yes
+C:\WINNT\system32\MSRDO20.DLL=Yes
+C:\WINNT\system32\RDOCURS.DLL=Yes
+C:\WINNT\system32\RDO20CHS.DLL=Yes
+C:\WINNT\system32\RDC20CHS.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINNT\system32\Vb6stkit.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+E:\短信开发包\smsSend\AscendComm.dll=Yes
+E:\短信开发包\smsSend\config.ini=Yes
+
+[Package|标准安装软件包 1|Configure Registry Files]
+Applicable=No
+
+[Package|标准安装软件包 1|Configure Remote Servers]
+Applicable=No
+
+[Package|标准安装软件包 1|Install Locations]
+E:\短信开发包\smsSend\smsSend.exe=$(AppPath)
+C:\WINNT\system32\Msvbvm60.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\oleaut32.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\olepro32.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\asycfilt.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\stdole2.tlb=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\vb6chs.dll=$(WinSysPath)
+E:\短信开发包\smsSend\AscendSMS.dll=$(AppPath)
+C:\WINNT\system32\odbcconf.dll=$(AppPath)
+C:\WINNT\system32\Dao360.dll=$(WinSysPath)
+C:\Program Files\Common Files\System\ado\msado26.tlb=$(WinSysPath)
+C:\WINNT\system32\MSRDC20.OCX=$(WinSysPath)
+C:\WINNT\system32\MSRDO20.DLL=$(WinSysPath)
+C:\WINNT\system32\RDOCURS.DLL=$(WinSysPath)
+C:\WINNT\system32\RDO20CHS.DLL=$(WinSysPath)
+C:\WINNT\system32\RDC20CHS.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINNT\system32\Vb6stkit.dll=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+E:\短信开发包\smsSend\AscendComm.dll=$(WinSysPath)
+E:\短信开发包\smsSend\config.ini=$(AppPath)
+
+[Package|标准安装软件包 1|Configure Shared Files]
+Applicable=Yes
+E:\短信开发包\smsSend\smsSend.exe=No
+E:\短信开发包\smsSend\AscendSMS.dll=No
+C:\WINNT\system32\odbcconf.dll=No
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+E:\短信开发包\smsSend\config.ini=No
+
+[Package|标准安装软件包 1|Distribution]
+Type=single
+Size=
+Title=短信发送服务器
+
+[Package|标准安装软件包 1|IconGroups]
+Group0=短信发送服务器
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|标准安装软件包 1|短信发送服务器]
+Icon1=smsSend.exe
+Title1=短信发送服务器
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|标准安装软件包 1|Package]
+PackageFolder=E:\短信开发包\smsSend\包
+ProjectFolder=E:\短信开发包\smsSend
+ServerSideCab=
+File1=E:\短信开发包\smsSend\包\setup.exe
+File2=E:\短信开发包\smsSend\包\Setup.Lst
+File3=E:\短信开发包\smsSend\包\smsSend.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
